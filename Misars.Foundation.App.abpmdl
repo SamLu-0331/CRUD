@@ -1,0 +1,113 @@
+{
+  "template": "app",
+  "imports": {
+    "Volo.Abp.TextTemplateManagement": {
+      "version": "8.2.1",
+      "isInstalled": true
+    },
+    "Volo.Abp.LanguageManagement": {
+      "version": "8.2.1",
+      "isInstalled": true
+    },
+    "Volo.FileManagement": {
+      "version": "8.2.1",
+      "isInstalled": true
+    },
+    "Volo.Abp.OpenIddict.Pro": {
+      "version": "8.2.1",
+      "isInstalled": true
+    },
+    "Volo.Abp.Gdpr": {
+      "version": "8.2.1",
+      "isInstalled": true
+    },
+    "Volo.Abp.AuditLogging.Pro": {
+      "version": "8.2.1",
+      "isInstalled": true
+    },
+    "Volo.Saas": {
+      "version": "8.2.1",
+      "isInstalled": true
+    },
+    "Volo.Abp.Identity.Pro": {
+      "version": "8.2.1",
+      "isInstalled": true
+    },
+    "Volo.Abp.Account.Pro": {
+      "version": "8.2.1",
+      "isInstalled": true
+    }
+  },
+  "folders": {
+    "items": {
+      "src": {},
+      "test": {}
+    }
+  },
+  "packages": {
+    "Misars.Foundation.App.Application": {
+      "path": "src/Misars.Foundation.App.Application/Misars.Foundation.App.Application.abppkg",
+      "folder": "src"
+    },
+    "Misars.Foundation.App.Application.Tests": {
+      "path": "test/Misars.Foundation.App.Application.Tests/Misars.Foundation.App.Application.Tests.abppkg",
+      "folder": "test"
+    },
+    "Misars.Foundation.App.Domain.Shared": {
+      "path": "src/Misars.Foundation.App.Domain.Shared/Misars.Foundation.App.Domain.Shared.abppkg",
+      "folder": "src"
+    },
+    "Misars.Foundation.App.Application.Contracts": {
+      "path": "src/Misars.Foundation.App.Application.Contracts/Misars.Foundation.App.Application.Contracts.abppkg",
+      "folder": "src"
+    },
+    "Misars.Foundation.App.HttpApi": {
+      "path": "src/Misars.Foundation.App.HttpApi/Misars.Foundation.App.HttpApi.abppkg",
+      "folder": "src"
+    },
+    "Misars.Foundation.App.HttpApi.Client": {
+      "path": "src/Misars.Foundation.App.HttpApi.Client/Misars.Foundation.App.HttpApi.Client.abppkg",
+      "folder": "src"
+    },
+    "Misars.Foundation.App.EntityFrameworkCore.Tests": {
+      "path": "test/Misars.Foundation.App.EntityFrameworkCore.Tests/Misars.Foundation.App.EntityFrameworkCore.Tests.abppkg",
+      "folder": "test"
+    },
+    "Misars.Foundation.App.EntityFrameworkCore": {
+      "path": "src/Misars.Foundation.App.EntityFrameworkCore/Misars.Foundation.App.EntityFrameworkCore.abppkg",
+      "folder": "src"
+    },
+    "Misars.Foundation.App.TestBase": {
+      "path": "test/Misars.Foundation.App.TestBase/Misars.Foundation.App.TestBase.abppkg",
+      "folder": "test"
+    },
+    "Misars.Foundation.App.Domain.Tests": {
+      "path": "test/Misars.Foundation.App.Domain.Tests/Misars.Foundation.App.Domain.Tests.abppkg",
+      "folder": "test"
+    },
+    "Misars.Foundation.App.HttpApi.Client.ConsoleTestApp": {
+      "path": "test/Misars.Foundation.App.HttpApi.Client.ConsoleTestApp/Misars.Foundation.App.HttpApi.Client.ConsoleTestApp.abppkg",
+      "folder": "test"
+    },
+    "Misars.Foundation.App.DbMigrator": {
+      "path": "src/Misars.Foundation.App.DbMigrator/Misars.Foundation.App.DbMigrator.abppkg",
+      "folder": "src"
+    },
+    "Misars.Foundation.App.HttpApi.Host": {
+      "path": "src/Misars.Foundation.App.HttpApi.Host/Misars.Foundation.App.HttpApi.Host.abppkg",
+      "folder": "src"
+    },
+    "Misars.Foundation.App.Blazor": {
+      "path": "src/Misars.Foundation.App.Blazor/Misars.Foundation.App.Blazor.abppkg",
+      "folder": "src"
+    },
+    "Misars.Foundation.App.Blazor.Client": {
+      "path": "src/Misars.Foundation.App.Blazor.Client/Misars.Foundation.App.Blazor.Client.abppkg",
+      "folder": "src"
+    },
+    "Misars.Foundation.App.Domain": {
+      "path": "src/Misars.Foundation.App.Domain/Misars.Foundation.App.Domain.abppkg",
+      "folder": "src"
+    }
+  }
+}

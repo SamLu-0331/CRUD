@@ -1,0 +1,250 @@
+@page "/patients"
+@attribute [Authorize(AppPermissions.Patients.Default)]
+@using Misars.Foundation.App.Permissions
+@using Microsoft.AspNetCore.Authorization
+@using Misars.Foundation.App.Patients
+@using Volo.Abp
+@using Volo.Abp.Application.Dtos
+@using Misars.Foundation.App
+@using Misars.Foundation.App.Localization
+@using Microsoft.Extensions.Localization
+@using Volo.Abp.AspNetCore.Components.Web
+@inject IStringLocalizer<AppResource> L
+@inject AbpBlazorMessageLocalizerHelper<AppResource> LH
+@inherits AbpCrudPageBase<IPatientAppService, PatientDto, Guid, PagedAndSortedResultRequestDto, CreateUpdatePatientDto>
+
+<Card>
+    <CardHeader>
+        <Row Class="justify-content-between">
+            <Column ColumnSize="ColumnSize.IsAuto">
+                <h2>@L["Patients"]</h2>
+            </Column>
+            <Column ColumnSize="ColumnSize.IsAuto">
+                @if (HasCreatePermission)
+                {
+                    <Button Color="Color.Primary"
+                            Clicked="OpenCreateModalAsync">@L["NewPatient"]</Button>
+                }
+            </Column>
+        </Row>
+    </CardHeader>
+    <CardBody>
+        <DataGrid TItem="PatientDto"
+                  Data="Entities"
+                  ReadData="OnDataGridReadAsync"
+                  CurrentPage="CurrentPage"
+                  TotalItems="TotalCount"
+                  ShowPager="true"
+                  PageSize="PageSize">
+            <DataGridColumns>
+                <DataGridEntityActionsColumn TItem="PatientDto" @ref="@EntityActionsColumn">
+                    <DisplayTemplate>
+                        <EntityActions TItem="PatientDto" EntityActionsColumn="@EntityActionsColumn">
+                            <EntityAction TItem="PatientDto"
+                                        Text="@L["Edit"]"
+                                        Visible=HasUpdatePermission
+                                        Clicked="() => OpenEditModalAsync(context)" />
+                            <EntityAction TItem="PatientDto"
+                                        Text="@L["Delete"]"
+                                        Visible=HasDeletePermission
+                                        Clicked="() => DeleteEntityAsync(context)"
+                                        ConfirmationMessage="()=>GetDeleteConfirmationMessage(context)" />
+                        </EntityActions>
+
+                    </DisplayTemplate>
+                </DataGridEntityActionsColumn>
+                <DataGridColumn TItem="PatientDto"
+                                Field="@nameof(PatientDto.Name)"
+                                Caption="@L["Name"]"></DataGridColumn>
+                <DataGridColumn TItem="PatientDto"
+                                Field="@nameof(PatientDto.DoctorName)"
+                                Caption="@L["Doctor"]"></DataGridColumn>
+
+                <DataGridColumn TItem="PatientDto"
+                                Field="@nameof(PatientDto.Type)"
+                                Caption="@L["Type"]">
+                    <DisplayTemplate>
+                        @L[$"Enum:PatientType.{context.Type}"]
+                    </DisplayTemplate>
+                </DataGridColumn>
+                <DataGridColumn TItem="PatientDto"
+                                Field="@nameof(PatientDto.PublishDate)"
+                                Caption="@L["PublishDate"]">
+                    <DisplayTemplate>
+                        @context.PublishDate.ToShortDateString()
+                    </DisplayTemplate>
+                </DataGridColumn>
+                <DataGridColumn TItem="PatientDto"
+                                Field="@nameof(PatientDto.Price)"
+                                Caption="@L["Price"]">
+                </DataGridColumn>
+                <DataGridColumn TItem="PatientDto"
+                                Field="@nameof(PatientDto.CreationTime)"
+                                Caption="@L["CreationTime"]">
+                    <DisplayTemplate>
+                        @context.CreationTime.ToLongDateString()
+                    </DisplayTemplate>
+                </DataGridColumn>
+            </DataGridColumns>
+        </DataGrid>
+    </CardBody>
+</Card>
+
+<Modal @ref="@CreateModal">
+    <ModalContent IsCentered="true">
+        <Form>
+            <ModalHeader>
+                <ModalTitle>@L["NewPatient"]</ModalTitle>
+                <CloseButton Clicked="CloseCreateModalAsync"/>
+            </ModalHeader>
+            <ModalBody>
+                <Validations @ref="@CreateValidationsRef" Model="@NewEntity" ValidateOnLoad="false">
+                    <Validation MessageLocalizer="@LH.Localize">
+                        <Field>
+                            <FieldLabel>@L["Doctor"]</FieldLabel>
+                            <Select TValue="Guid" @bind-SelectedValue="@NewEntity.DoctorId">
+                                @foreach (var doctor in doctorList)
+                                {
+                                    <SelectItem TValue="Guid" Value="@doctor.Id">
+                                        @doctor.Name
+                                    </SelectItem>
+                                }
+                                </Select>
+                        </Field>
+
+                        <Field>
+                            <FieldLabel>@L["Name"]</FieldLabel>
+                            <TextEdit @bind-Text="@NewEntity.Name">
+                                <Feedback>
+                                    <ValidationError/>
+                                </Feedback>
+                            </TextEdit>
+                        </Field>
+                    </Validation>
+                    <Field>
+                        <FieldLabel>@L["Type"]</FieldLabel>
+                        <Select TValue="PatientType" @bind-SelectedValue="@NewEntity.Type">
+                            @foreach (int patientTypeValue in Enum.GetValues(typeof(PatientType)))
+                            {
+                                <SelectItem TValue="PatientType" Value="@((PatientType) patientTypeValue)">
+                                    @L[$"Enum:PatientType.{patientTypeValue}"]
+                                </SelectItem>
+                            }
+                        </Select>
+                    </Field>
+                    <Field>
+                        <FieldLabel>@L["PublishDate"]</FieldLabel>
+                        <DateEdit TValue="DateTime" @bind-Date="NewEntity.PublishDate"/>
+                    </Field>
+                    <Field>
+                        <FieldLabel>@L["Price"]</FieldLabel>
+                        <NumericEdit TValue="float" @bind-Value="NewEntity.Price"/>
+                    </Field>
+                </Validations>
+            </ModalBody>
+            <ModalFooter>
+                <Button Color="Color.Secondary"
+                        Clicked="CloseCreateModalAsync">@L["Cancel"]</Button>
+                <Button Color="Color.Primary"
+                        Type="@ButtonType.Submit"
+                        PreventDefaultOnSubmit="true"
+                        Clicked="CreateEntityAsync">@L["Save"]</Button>
+            </ModalFooter>
+        </Form>
+    </ModalContent>
+</Modal>
+
+<Modal @ref="@EditModal">
+    <ModalContent IsCentered="true">
+        <Form>
+            <ModalHeader>
+                <ModalTitle>@EditingEntity.Name</ModalTitle>
+                <CloseButton Clicked="CloseEditModalAsync"/>
+            </ModalHeader>
+            <ModalBody>
+                <Validations @ref="@EditValidationsRef" Model="@NewEntity" ValidateOnLoad="false">
+                    <Validation MessageLocalizer="@LH.Localize">
+                        <Field>
+                            <FieldLabel>@L["Doctor"]</FieldLabel>
+                            <Select TValue="Guid" @bind-SelectedValue="@EditingEntity.DoctorId">
+                                @foreach (var doctor in doctorList)
+                                {
+                                    <SelectItem TValue="Guid" Value="@doctor.Id">
+                                        @doctor.Name
+                                    </SelectItem>
+                                }
+                            </Select>
+                        </Field>
+
+                        <Field>
+                            <FieldLabel>@L["Name"]</FieldLabel>
+                            <TextEdit @bind-Text="@EditingEntity.Name">
+                                <Feedback>
+                                    <ValidationError/>
+                                </Feedback>
+                            </TextEdit>
+                        </Field>
+                    </Validation>
+                    <Field>
+                        <FieldLabel>@L["Type"]</FieldLabel>
+                        <Select TValue="PatientType" @bind-SelectedValue="@EditingEntity.Type">
+                            @foreach (int patientTypeValue in Enum.GetValues(typeof(PatientType)))
+                            {
+                                <SelectItem TValue="PatientType" Value="@((PatientType) patientTypeValue)">
+                                    @L[$"Enum:PatientType.{patientTypeValue}"]
+                                </SelectItem>
+                            }
+                        </Select>
+                    </Field>
+                    <Field>
+                        <FieldLabel>@L["PublishDate"]</FieldLabel>
+                        <DateEdit TValue="DateTime" @bind-Date="EditingEntity.PublishDate"/>
+                    </Field>
+                    <Field>
+                        <FieldLabel>@L["Price"]</FieldLabel>
+                        <NumericEdit TValue="float" @bind-Value="EditingEntity.Price"/>
+                    </Field>
+                </Validations>
+            </ModalBody>
+            <ModalFooter>
+                <Button Color="Color.Secondary"
+                        Clicked="CloseEditModalAsync">@L["Cancel"]</Button>
+                <Button Color="Color.Primary"
+                        Type="@ButtonType.Submit"
+                        PreventDefaultOnSubmit="true"
+                        Clicked="UpdateEntityAsync">@L["Save"]</Button>
+            </ModalFooter>
+        </Form>
+    </ModalContent>
+</Modal>
+@code
+{
+    //ADDED A NEW FIELD
+    IReadOnlyList<DoctorLookupDto> doctorList = Array.Empty<DoctorLookupDto>();
+
+    public Patients() // Constructor
+    {
+        CreatePolicyName = AppPermissions.Patients.Create;
+        UpdatePolicyName = AppPermissions.Patients.Edit;
+        DeletePolicyName = AppPermissions.Patients.Delete;
+    }
+
+    //GET AUTHORS ON INITIALIZATION
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+        doctorList = (await AppService.GetDoctorLookupAsync()).Items;
+    }
+
+    protected override async Task OpenCreateModalAsync()
+    {
+        if (!doctorList.Any())
+        {
+            throw new UserFriendlyException(message: L["AnDoctorIsRequiredForCreatingPatient"]);
+        }
+        
+        await base.OpenCreateModalAsync();
+        NewEntity.DoctorId = doctorList.First().Id;
+    }
+}
+

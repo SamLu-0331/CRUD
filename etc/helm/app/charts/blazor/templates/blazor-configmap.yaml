@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-{{ .Chart.Name }}-configmap
+data:
+  appsettings.json: |-
+    {
+    "App": {
+        "SelfUrl": "{{ include "app.hosts.blazor" . }}"
+    },
+    "AuthServer": {
+        "Authority": "{{ include "app.hosts.httpapi" . }}",        "ClientId": "App_Blazor",
+        "ResponseType": "code"
+    },
+    "RemoteServices": {
+        "Default": {
+          "BaseUrl": "{{ include "app.hosts.httpapi" . }}"
+        },
+        "AbpAccountPublic": {
+          "BaseUrl": "{{ include "app.hosts.httpapi" . }}"        }
+    },
+    "AbpCli": {
+        "Bundle": {
+        "Mode": "BundleAndMinify", /* Options: None, Bundle, BundleAndMinify */
+        "Name": "global"
+        }
+    }
+    }

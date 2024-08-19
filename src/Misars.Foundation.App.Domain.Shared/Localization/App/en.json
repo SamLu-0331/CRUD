@@ -1,0 +1,51 @@
+{
+  "Culture": "en",
+  "Texts": {
+    "Menu:Home": "Home",
+    "Welcome": "Welcome",
+    "LongWelcomeMessage": "Welcome to the application. This is a startup project based on the ABP. For more information, visit abp.io.",
+    "Menu:App": "Hospital",
+    "Menu:Patients": "Patients",
+    "Actions": "Actions",
+    "Close": "Close",
+    "Delete": "Delete",
+    "Edit": "Edit",
+    "PublishDate": "Publish date",
+    "NewPatient": "New Patient",
+    "Name": "Name",
+    "Type": "Type",
+    "Price": "Price",
+    "CreationTime": "Creation time",
+    "AreYouSure": "Are you sure?",
+    "AreYouSureToDelete": "Are you sure you want to delete this item?",
+    "Enum:patientType.0": "Undefined",
+    "Enum:patientType.1": "Adventure",
+    "Enum:patientType.2": "Biography",
+    "Enum:patientType.3": "Dystopia",
+    "Enum:patientType.4": "Fantastic",
+    "Enum:patientType.5": "Horror",
+    "Enum:patientType.6": "Science",
+    "Enum:patientType.7": "Science fiction",
+    "Enum:patientType.8": "Poetry",
+    "Permission:App": "App",
+    "Permission:Patients": "Patient Management",
+    "Permission:Patients.Create": "Creating new Patients",
+    "Permission:Patients.Edit": "Editing the Patients",
+    "Permission:Patients.Delete": "Deleting the Patients",
+    "App:00001": "There is already an Doctor with the same name: {name}",
+    "Permission:Doctors": "Doctor Management",
+    "Permission:Doctors.Create": "Creating new doctors",
+    "Permission:Doctors.Edit": "Editing the doctors",
+    "Permission:Doctors.Delete": "Deleting the doctors",
+    "Menu:Doctors": "Doctors",
+    "Doctors": "Doctors",
+    "DoctorDeletionConfirmationMessage": "Are you sure to delete the doctor '{0}'?",
+    "BirthDate": "Birth date",
+    "NewDoctor": "New doctor",
+    "AnDoctorIsRequiredForCreatingPatient": "An doctor is required to create a patient"
+
+
+
+
+  }
+}
