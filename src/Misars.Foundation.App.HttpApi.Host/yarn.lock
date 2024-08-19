@@ -2,7 +2,7 @@
 # yarn lockfile v1
 
 
-"@abp/aspnetcore.mvc.ui.theme.shared@~8.2.1":
+"@abp/aspnetcore.mvc.ui.theme.shared@~8.2.2":
   version "8.2.2"
   resolved "https://registry.yarnpkg.com/@abp/aspnetcore.mvc.ui.theme.shared/-/aspnetcore.mvc.ui.theme.shared-8.2.2.tgz#419da4bac71ceb7b1afbd8b740b0675f51de6575"
   integrity sha512-tYPbEqoENmxzN9zaBAF8/ssNk8uuVTkKpi663612H1b85ik3Tbm4H3gamKbSR1TxMwIJZxVyizxDMDhLu6ff3w==
@@ -60,7 +60,7 @@
   dependencies:
     "@abp/utils" "~8.2.2"
 
-"@abp/cropperjs@~8.2.1":
+"@abp/cropperjs@~8.2.2":
   version "8.2.2"
   resolved "https://registry.yarnpkg.com/@abp/cropperjs/-/cropperjs-8.2.2.tgz#64701cf90c7469f8c5e92bd34728bff4c629f83f"
   integrity sha512-l1qVYQ61XrAWQGdB5NJpT2P9ibLEZdOc9vZbeVHBFiS8JT/YqgXlFRbCIUGgmxqd9KF8WVUvzvzTtmhpOAgMEw==
@@ -155,7 +155,7 @@
   dependencies:
     moment "^2.9.0"
 
-"@abp/qrcode@~8.2.1":
+"@abp/qrcode@~8.2.2":
   version "8.2.2"
   resolved "https://registry.yarnpkg.com/@abp/qrcode/-/qrcode-8.2.2.tgz#cd12df90620a57ec250fa04b2a168c4019a5c242"
   integrity sha512-ZbcyBBVvzjh81f74KbrCgqmMpNoUhfI38qhFaeJshY1rH0grBZKyK9Ctp9QkxzySgJ131mu1NvFLzmDpkfN6Jw==
@@ -194,7 +194,7 @@
     "@abp/jquery" "~8.2.2"
     toastr "^2.1.4"
 
-"@abp/uppy@~8.2.1":
+"@abp/uppy@~8.2.2":
   version "8.2.2"
   resolved "https://registry.yarnpkg.com/@abp/uppy/-/uppy-8.2.2.tgz#fd03486da77ac663e998223614c9f3b0d287f104"
   integrity sha512-qDbYGQdMf2KST1VqkO4DQmBeUv/XObQ+wO6hVVzKnMmM5o+Ii5eiKYB6t3DAiJuP51UA3LO2h55qoVbgoJVghA==
@@ -209,7 +209,7 @@
   dependencies:
     just-compare "^2.3.0"
 
-"@abp/zxcvbn@~8.2.1":
+"@abp/zxcvbn@~8.2.2":
   version "8.2.2"
   resolved "https://registry.yarnpkg.com/@abp/zxcvbn/-/zxcvbn-8.2.2.tgz#f0563ba392b0b50622a8ce19dcf7faf2a5e64165"
   integrity sha512-aT9iwt8u7/tFEKVgdr3D9fs2/fCyRhLWFBqVLnHynM20NnlmIKuE15HDMk7+QWJ3XkojHK/CuOaTuo5+h9qTNQ==
@@ -591,30 +591,30 @@
     "@uppy/utils" "^5.9.0"
     preact "^10.5.13"
 
-"@volo/abp.aspnetcore.mvc.ui.theme.commercial@~8.2.1":
-  version "8.2.1"
-  resolved "https://registry.yarnpkg.com/@volo/abp.aspnetcore.mvc.ui.theme.commercial/-/abp.aspnetcore.mvc.ui.theme.commercial-8.2.1.tgz#d518ce12a29af026218c40bcdbab353aada167f1"
-  integrity sha512-k7at4ks9FMxghdPMsfBGQ2BhR/YEoYnCBJjT8j/ugjS++f83lFkQAYFsdcrIVVwCui4wb3zceVX4eqTtL03uYQ==
+"@volo/abp.aspnetcore.mvc.ui.theme.commercial@~8.2.2":
+  version "8.2.2"
+  resolved "https://registry.yarnpkg.com/@volo/abp.aspnetcore.mvc.ui.theme.commercial/-/abp.aspnetcore.mvc.ui.theme.commercial-8.2.2.tgz#936e10ae94eb3e777a5b13795469eedbeba05cb3"
+  integrity sha512-RiP9GfNDmNMjVHsy5IxcG/4BSC+1WcNRbwF9X9AecNHK/KkhaFj+EcR+d4pCM4SGUEyPqKSup12phPwkQALjmg==
   dependencies:
-    "@abp/aspnetcore.mvc.ui.theme.shared" "~8.2.1"
+    "@abp/aspnetcore.mvc.ui.theme.shared" "~8.2.2"
 
-"@volo/abp.aspnetcore.mvc.ui.theme.leptonx@~3.2.1":
-  version "3.2.1"
-  resolved "https://registry.yarnpkg.com/@volo/abp.aspnetcore.mvc.ui.theme.leptonx/-/abp.aspnetcore.mvc.ui.theme.leptonx-3.2.1.tgz#0997fd5db27edfc35cb2efc03d4c3cac47e17672"
-  integrity sha512-Sr5lh2um7aIFGtXZpv1FejyMbAzquBuA+LGPxlN6FvTM2o6erXD1E/ErP36S6ftPGI09ZUW7wgbrh4P3yKSgCA==
+"@volo/abp.aspnetcore.mvc.ui.theme.leptonx@~3.2.2":
+  version "3.2.2"
+  resolved "https://registry.yarnpkg.com/@volo/abp.aspnetcore.mvc.ui.theme.leptonx/-/abp.aspnetcore.mvc.ui.theme.leptonx-3.2.2.tgz#e494e70ead39b38f81b0c1d642bd7cc339109908"
+  integrity sha512-zO/Vt49MkqQazOrDguOH2PQ6UJ1fw9OCeZ9LYqEzoOySKm8iaItHNMyZ6GMaeULfaCX8+guD4bs1pfoDLdiD5Q==
   dependencies:
-    "@volo/abp.aspnetcore.mvc.ui.theme.commercial" "~8.2.1"
+    "@volo/abp.aspnetcore.mvc.ui.theme.commercial" "~8.2.2"
 
-"@volo/account@~8.2.1":
-  version "8.2.1"
-  resolved "https://registry.yarnpkg.com/@volo/account/-/account-8.2.1.tgz#7c9547aaffd2f4c29912eb3609debf976859a2e5"
-  integrity sha512-XlwEEPTqdcZ/JP26GcUP7k2qVPONc3sXFnv3fvx/DJZl/8g3wP3pWHT+XFqUFBEHYpJAJNVscVr0+t90dgBhBw==
+"@volo/account@~8.2.2":
+  version "8.2.2"
+  resolved "https://registry.yarnpkg.com/@volo/account/-/account-8.2.2.tgz#8be900c0d3970d7a146ffc23484fad83d5ce12b9"
+  integrity sha512-SYyRaeTyfggJqBT1+GLJNDGPbndj6K3REs19JfN9zeVPzukk7h4N+GI2pBIvkzn4f53fcuccCHXvmL9aKRRTIA==
   dependencies:
-    "@abp/cropperjs" "~8.2.1"
-    "@abp/qrcode" "~8.2.1"
-    "@abp/uppy" "~8.2.1"
-    "@abp/zxcvbn" "~8.2.1"
-    "@volo/abp.aspnetcore.mvc.ui.theme.commercial" "~8.2.1"
+    "@abp/cropperjs" "~8.2.2"
+    "@abp/qrcode" "~8.2.2"
+    "@abp/uppy" "~8.2.2"
+    "@abp/zxcvbn" "~8.2.2"
+    "@volo/abp.aspnetcore.mvc.ui.theme.commercial" "~8.2.2"
 
 ansi-colors@^4.1.1:
   version "4.1.3"

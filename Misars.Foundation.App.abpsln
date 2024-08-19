@@ -3,8 +3,8 @@
   "template": "app",
   "versions": {
     "LeptonX": "3.2.1",
-    "AbpFramework": "8.2.1",
-    "AbpCommercial": "8.2.1",
+    "AbpFramework": "8.2.2",
+    "AbpCommercial": "8.2.2",
     "AbpStudio": "0.7.6"
   },
   "modules": {

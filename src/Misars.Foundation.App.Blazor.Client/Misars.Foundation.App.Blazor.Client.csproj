@@ -17,24 +17,24 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Volo.Abp.Autofac.WebAssembly" Version="8.2.1" />
-    <PackageReference Include="Volo.Abp.SettingManagement.Blazor.WebAssembly" Version="8.2.1" />
+    <PackageReference Include="Volo.Abp.Autofac.WebAssembly" Version="8.2.2" />
+    <PackageReference Include="Volo.Abp.SettingManagement.Blazor.WebAssembly" Version="8.2.2" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Volo.Abp.AspNetCore.Components.WebAssembly.LeptonXTheme" Version="3.2.1" />
+    <PackageReference Include="Volo.Abp.AspNetCore.Components.WebAssembly.LeptonXTheme" Version="3.2.2" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Volo.Abp.Account.Pro.Admin.Blazor.WebAssembly" Version="8.2.1" />
-    <PackageReference Include="Volo.Abp.Identity.Pro.Blazor.WebAssembly" Version="8.2.1" />
-    <PackageReference Include="Volo.Saas.Host.Blazor.WebAssembly" Version="8.2.1" />
-    <PackageReference Include="Volo.Abp.TextTemplateManagement.Blazor.WebAssembly" Version="8.2.1" />
-    <PackageReference Include="Volo.Abp.AuditLogging.Blazor.WebAssembly" Version="8.2.1" />
-    <PackageReference Include="Volo.Abp.LanguageManagement.Blazor.WebAssembly" Version="8.2.1" />
-    <PackageReference Include="Volo.FileManagement.Blazor.WebAssembly" Version="8.2.1" />
-    <PackageReference Include="Volo.Abp.OpenIddict.Pro.Blazor.WebAssembly" Version="8.2.1" />
-    <PackageReference Include="Volo.Abp.Gdpr.Blazor.WebAssembly" Version="8.2.1" />
+    <PackageReference Include="Volo.Abp.Account.Pro.Admin.Blazor.WebAssembly" Version="8.2.2" />
+    <PackageReference Include="Volo.Abp.Identity.Pro.Blazor.WebAssembly" Version="8.2.2" />
+    <PackageReference Include="Volo.Saas.Host.Blazor.WebAssembly" Version="8.2.2" />
+    <PackageReference Include="Volo.Abp.TextTemplateManagement.Blazor.WebAssembly" Version="8.2.2" />
+    <PackageReference Include="Volo.Abp.AuditLogging.Blazor.WebAssembly" Version="8.2.2" />
+    <PackageReference Include="Volo.Abp.LanguageManagement.Blazor.WebAssembly" Version="8.2.2" />
+    <PackageReference Include="Volo.FileManagement.Blazor.WebAssembly" Version="8.2.2" />
+    <PackageReference Include="Volo.Abp.OpenIddict.Pro.Blazor.WebAssembly" Version="8.2.2" />
+    <PackageReference Include="Volo.Abp.Gdpr.Blazor.WebAssembly" Version="8.2.2" />
   </ItemGroup>
 
   <ItemGroup>

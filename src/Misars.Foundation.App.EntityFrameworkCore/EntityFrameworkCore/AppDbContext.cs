@@ -1,3 +1,4 @@
+using Misars.Foundation.App.SurgeryTimetables;
 using Microsoft.EntityFrameworkCore;
 using Volo.Abp.AuditLogging.EntityFrameworkCore;
 using Volo.Abp.BackgroundJobs.EntityFrameworkCore;
@@ -32,6 +33,7 @@ public class AppDbContext :
     ISaasDbContext,
     IIdentityProDbContext
 {
+    public DbSet<SurgeryTimetable> SurgeryTimetables { get; set; } = null!;
     /* Add DbSet properties for your Aggregate Roots / Entities here. */
     public DbSet<Patient> Patients { get; set; }
     public DbSet<Doctor> Doctors { get; set; }
@@ -91,11 +93,11 @@ public class AppDbContext :
         builder.ConfigureTextTemplateManagement();
         builder.ConfigureGdpr();
         builder.ConfigureBlobStoring();
-         builder.ConfigurePermissionManagement();
+        builder.ConfigurePermissionManagement();
         /* Configure your own tables/entities inside here */
         builder.Entity<Patient>(b =>
                 {
-                    b.ToTable(AppConsts.DbTablePrefix + "Patients",AppConsts.DbSchema);
+                    b.ToTable(AppConsts.DbTablePrefix + "Patients", AppConsts.DbSchema);
                     b.ConfigureByConvention(); //auto configure for the base class props
                     b.Property(x => x.Name).IsRequired().HasMaxLength(128);
                     b.HasOne<Doctor>().WithMany().HasForeignKey(x => x.DoctorId).IsRequired();
@@ -104,9 +106,9 @@ public class AppDbContext :
                 {
                     b.ToTable(AppConsts.DbTablePrefix + "Doctors",
                         AppConsts.DbSchema);
-                    
+
                     b.ConfigureByConvention();
-                    
+
                     b.Property(x => x.Name)
                         .IsRequired()
                         .HasMaxLength(DoctorConsts.MaxNameLength);
@@ -120,5 +122,21 @@ public class AppDbContext :
         //    b.ConfigureByConvention(); //auto configure for the base class props
         //    //...
         //});
+        if (builder.IsHostDatabase())
+        {
+
+        }
+        if (builder.IsHostDatabase())
+        {
+            builder.Entity<SurgeryTimetable>(b =>
+            {
+                b.ToTable(AppConsts.DbTablePrefix + "SurgeryTimetables", AppConsts.DbSchema);
+                b.ConfigureByConvention();
+                b.Property(x => x.Name).HasColumnName(nameof(SurgeryTimetable.Name)).IsRequired();
+                b.Property(x => x.BirthDate).HasColumnName(nameof(SurgeryTimetable.BirthDate));
+                b.HasOne<SurgeryTimetable>().WithMany().HasForeignKey(x => x.SurgeryTimetableId).OnDelete(DeleteBehavior.SetNull);
+            });
+
+        }
     }
 }

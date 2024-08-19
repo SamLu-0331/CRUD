@@ -1,4 +1,6 @@
-﻿using System;
+using System.Collections.Generic;
+using Microsoft.AspNetCore.Authorization;
+using System;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using Misars.Foundation.App.Localization;
@@ -40,47 +42,54 @@ public class AppMenuContributor : IMenuContributor
     }
 
     private async Task ConfigureMainMenuAsync(MenuConfigurationContext context)
-{
-    var l = context.GetLocalizer<AppResource>();
-
-    context.Menu.Items.Insert(
-        0,
-        new ApplicationMenuItem(
-            "App.Home",
-            l["Menu:Home"],
-            "/",
-            icon: "fas fa-home"
-        )
-    );
-
-    var appMenu = new ApplicationMenuItem(
-        "App",
-        l["Menu:App"],
-        icon: "fa fa-book"
-    );
-
-    context.Menu.AddItem(appMenu);
-
-    //CHECK the PERMISSION
-    if (await context.IsGrantedAsync(AppPermissions.Patients.Default))
     {
-        appMenu.AddItem(new ApplicationMenuItem(
-            "App.Patients",
-            l["Menu:Patients"],
-            url: "/Patients"
-        ));
-    }
-    if (await context.IsGrantedAsync(AppPermissions.Doctors.Default))
-    {
-        context.Menu.AddItem(new ApplicationMenuItem(
-            "App.Doctors",
-            l["Menu:Doctors"],
-            url: "/doctors"
-        ));
-    }
+        var l = context.GetLocalizer<AppResource>();
 
-}
+        context.Menu.Items.Insert(
+            0,
+            new ApplicationMenuItem(
+                "App.Home",
+                l["Menu:Home"],
+                "/",
+                icon: "fas fa-home"
+            )
+        );
 
+        var appMenu = new ApplicationMenuItem(
+            "App",
+            l["Menu:App"],
+            icon: "fa fa-book"
+        );
+
+        context.Menu.AddItem(appMenu);
+
+        //CHECK the PERMISSION
+        if (await context.IsGrantedAsync(AppPermissions.Patients.Default))
+        {
+            appMenu.AddItem(new ApplicationMenuItem(
+                "App.Patients",
+                l["Menu:Patients"],
+                url: "/Patients"
+            ));
+        }
+        if (await context.IsGrantedAsync(AppPermissions.Doctors.Default))
+        {
+            context.Menu.AddItem(new ApplicationMenuItem(
+                "App.Doctors",
+                l["Menu:Doctors"],
+                url: "/doctors"
+            ));
+        }
+
+        context.Menu.AddItem(
+            new ApplicationMenuItem(
+                AppMenus.SurgeryTimetables,
+                l["Menu:SurgeryTimetables"],
+                url: "/surgery-timetables",
+icon: "fa fa-file-alt",
+                requiredPermissionName: AppPermissions.SurgeryTimetables.Default)
+        );
+    }
 
     private async Task ConfigureUserMenuAsync(MenuConfigurationContext context)
     {
